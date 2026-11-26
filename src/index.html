@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" data-theme="lavender" data-intensity="normal">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wobble</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/themes.css" />
+  <link rel="stylesheet" href="css/pet.css" />
+  <link rel="stylesheet" href="css/hub.css" />
+</head>
+<body class="hub">
+  <div id="app">
+    <header id="titlebar" data-tauri-drag-region>
+      <div class="brand" data-tauri-drag-region>Wobble<span id="brand-heart"></span></div>
+      <nav id="nav" aria-label="Main"></nav>
+      <div class="wallet" title="Stardust"><span id="wallet-ic"></span><b id="dust">0</b></div>
+      <div class="winbtns">
+        <button id="w-min" aria-label="Minimize"></button>
+        <button id="w-max" aria-label="Maximize"></button>
+        <button id="w-close" aria-label="Close to tray"></button>
+      </div>
+    </header>
+    <main id="page"></main>
+  </div>
+  <div id="overlay" hidden></div>
+  <div id="splash" role="status" aria-label="Loading">
+    <svg class="jelly" viewBox="0 0 200 200" aria-hidden="true">
+      <ellipse cx="100" cy="188" rx="54" ry="8" fill="rgba(50,25,90,.22)"/>
+      <path d="M47 74C38 40 48 22 58 20c16 6 28 20 32 34zM153 74c9-34-1-52-11-54-16 6-28 20-32 34z" fill="#fff7ff" stroke="#6c55b8" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M56 58c-4-16 0-26 4-28 8 4 14 12 16 20zM144 58c4-16 0-26-4-28-8 4-14 12-16 20z" fill="#ffb3cf"/>
+      <ellipse cx="100" cy="112" rx="68" ry="62" fill="#fff7ff" stroke="#6c55b8" stroke-width="3"/>
+      <path d="M34 96C44 60 78 54 96 60 82 84 72 110 34 124z" fill="#bfa9ee"/>
+      <ellipse cx="76" cy="112" rx="7" ry="9" fill="#3b2a5c"/><ellipse cx="124" cy="112" rx="7" ry="9" fill="#3b2a5c"/>
+      <circle cx="78.500" cy="108" r="2.700" fill="#fff"/><circle cx="126.500" cy="108" r="2.700" fill="#fff"/>
+      <ellipse cx="58" cy="128" rx="10" ry="6" fill="#ff9fb8" opacity=".6"/><ellipse cx="142" cy="128" rx="10" ry="6" fill="#ff9fb8" opacity=".6"/>
+      <path d="M92 130q4 6 8 0q4 6 8 0" fill="none" stroke="#3b2a5c" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+    <div class="word" aria-hidden="true"><span style="--n:0">w</span><span style="--n:1">o</span><span style="--n:2">b</span><span style="--n:3">b</span><span style="--n:4">l</span><span style="--n:5">e</span></div>
+    <div class="track"><i id="splash-bar"></i></div>
+  </div>
+  <script type="module" src="js/hub.js"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Capabilities for the Wobble pet and hub windows",
+  "windows": ["hub", "pet"],
+  "permissions": [
+    "core:default",
+    "core:window:allow-start-dragging",
+    "notification:default"
+  ]
+}

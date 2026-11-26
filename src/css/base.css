@@ -1,0 +1,41 @@
+/* Wobble - base tokens, typography (Gaegu) and resets */
+@font-face { font-family: 'Gaegu'; font-weight: 300; font-display: swap; src: local('Gaegu Light'), url('../assets/fonts/Gaegu-Light.ttf') format('truetype'); }
+@font-face { font-family: 'Gaegu'; font-weight: 400; font-display: swap; src: local('Gaegu Regular'), local('Gaegu'), url('../assets/fonts/Gaegu-Regular.ttf') format('truetype'); }
+@font-face { font-family: 'Gaegu'; font-weight: 700; font-display: swap; src: local('Gaegu Bold'), url('../assets/fonts/Gaegu-Bold.ttf') format('truetype'); }
+
+:root {
+  --font: 'Gaegu', 'Segoe Print', 'Comic Sans MS', cursive;
+  /* Type scale - Gaegu runs small, so the scale is a touch larger than usual */
+  --fs-xs: 15px; --fs-sm: 17px; --fs-md: 19px; --fs-lg: 24px; --fs-xl: 32px; --fs-2xl: 44px;
+  --radius: 22px; --radius-sm: 14px; --radius-xs: 10px;
+  --gap: 16px;
+  --ease: cubic-bezier(.34, 1.4, .5, 1);
+  /* Need colours stay constant across themes so bars are always readable */
+  --c-hunger: #f08fb0; --c-happy: #f3c98b; --c-energy: #8fd3f0; --c-clean: #a5dcb9; --c-bored: #f7a1c4; --c-health: #8fb8f0;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  font-family: var(--font); font-size: var(--fs-md); font-weight: 400; line-height: 1.25;
+  color: var(--ink); -webkit-font-smoothing: antialiased; user-select: none; -webkit-user-select: none; overflow: hidden;
+}
+h1, h2, h3, h4 { font-weight: 700; letter-spacing: .01em; line-height: 1.1; }
+button { font: inherit; color: inherit; border: 0; background: none; cursor: pointer; }
+input, select { font: inherit; color: inherit; }
+button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.hit { pointer-events: auto; }
+[hidden] { display: none !important; }
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: color-mix(in srgb, var(--ink) 25%, transparent); border-radius: 10px; border: 2px solid transparent; background-clip: padding-box; }
+::-webkit-scrollbar-track { background: transparent; }
+
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .001s !important; animation-iteration-count: 1 !important; transition-duration: .001s !important; } }
+
+/* icons (inline SVG) - shared by the hub and the pet window */
+.ic { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex: none; display: block; }
+.ic .f { fill: currentColor; fill-opacity: .16; }
+.ic-heart, .food-art, .game-art { flex: none; }
+.ic-heart { display: inline-block; }
+.food-art, .game-art { display: block; }

@@ -1,0 +1,31 @@
+/* The transparent desktop window. Everything outside the pet / bubble / menu is click-through (handled in Rust). */
+html, body.pet-window { background: transparent; }
+#stage { position: fixed; inset: 0; display: flex; align-items: flex-end; justify-content: center; }
+#col { display: flex; flex-direction: column; align-items: center; gap: 12px; width: 100%; padding-bottom: 4px; }
+#pet { width: 100%; }
+#pet .pv-body { cursor: grab; }
+
+.menu { display: flex; gap: 6px; padding: 8px; border-radius: 26px; background: rgba(255, 255, 255, .95); box-shadow: 0 10px 26px rgba(70, 40, 140, .26); animation: pop-in .32s var(--ease); max-width: 360px; flex-wrap: wrap; justify-content: center; color: #6b56b0; }
+.menu button { position: relative; width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; background: rgba(123, 95, 214, .1); transition: transform .16s var(--ease), background .16s; }
+.menu button:hover { transform: translateY(-3px) scale(1.08); background: rgba(123, 95, 214, .22); }
+.menu button:active { transform: scale(.94); }
+.menu .badge { position: absolute; right: -3px; bottom: -3px; min-width: 19px; height: 19px; padding: 0 4px; border-radius: 10px; background: #7b5fd6; color: #fff; font-size: 13px; line-height: 19px; font-weight: 700; }
+.menu .empty { padding: 6px 12px; font-size: 18px; }
+.menu .back { background: rgba(240, 163, 207, .25); }
+.menu button[data-act="hide"] { color: #c0577f; }
+
+/* status + quick settings card */
+.menu.status { flex-direction: column; flex-wrap: nowrap; align-items: stretch; gap: 7px; width: 270px; padding: 14px 16px; border-radius: 24px; text-align: left; }
+.menu.status button { transform: none !important; }
+.sp-head { display: flex; align-items: center; gap: 10px; }
+.sp-head b { display: block; font-size: 21px; color: #45337a; line-height: 1; }
+.sp-head span { font-size: 15px; color: #7662b0; }
+.sp-head .sp-x { margin-left: auto; width: 30px; height: 30px; }
+.sp-row { display: grid; grid-template-columns: 20px 82px 1fr; align-items: center; gap: 6px; font-size: 16px; color: #45337a; }
+.sp-bar { height: 9px; border-radius: 6px; background: rgba(123, 95, 214, .14); overflow: hidden; }
+.sp-bar b { display: block; height: 100%; border-radius: 6px; transition: width .5s; }
+.menu .sp-top { width: 100%; height: 38px; border-radius: 14px; display: flex; justify-content: space-between; padding: 0 12px; font-size: 17px; color: #45337a; margin-top: 4px; }
+.sp-top .sw { position: relative; width: 38px; height: 22px; border-radius: 12px; background: rgba(123, 95, 214, .25); transition: background .2s; }
+.sp-top .sw::after { content: ''; position: absolute; left: 3px; top: 3px; width: 16px; height: 16px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0, 0, 0, .3); transition: transform .22s var(--ease); }
+.sp-top .sw.on { background: #7b5fd6; } .sp-top .sw.on::after { transform: translateX(16px); }
+@keyframes pop-in { from { transform: scale(.7) translateY(10px); opacity: 0; } to { transform: none; opacity: 1; } }

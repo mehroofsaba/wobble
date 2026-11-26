@@ -1,0 +1,43 @@
+/* Wobble - themes. Every component reads only these variables. */
+:root, [data-theme="lavender"] {
+  --bg1: #8f7ddb; --bg2: #d9b8f0; --bg3: #f3c9e6;
+  --surface: rgba(255, 255, 255, .58); --surface-2: rgba(255, 255, 255, .78); --surface-solid: #f6efff;
+  --ink: #45337a; --ink-soft: #7662b0; --line: rgba(255, 255, 255, .7);
+  --accent: #7b5fd6; --accent-2: #f0a3cf; --accent-ink: #fff; --glow: rgba(255, 255, 255, .55);
+  --shadow: 0 10px 30px rgba(70, 40, 140, .22); --nav: rgba(255, 255, 255, .7);
+}
+[data-theme="cream"] {
+  --bg1: #f1dfb6; --bg2: #fbecc9; --bg3: #fff6e2;
+  --surface: rgba(255, 255, 255, .62); --surface-2: rgba(255, 255, 255, .85); --surface-solid: #fff8e8;
+  --ink: #6a4b2a; --ink-soft: #a07c52; --line: rgba(255, 255, 255, .8);
+  --accent: #dd9a4b; --accent-2: #f2b8a0; --accent-ink: #fff; --glow: rgba(255, 245, 210, .8);
+  --shadow: 0 10px 28px rgba(140, 100, 40, .2); --nav: rgba(255, 255, 255, .75);
+}
+[data-theme="pink"] {
+  --bg1: #f2a8cb; --bg2: #fbd0e2; --bg3: #ffe9f1;
+  --surface: rgba(255, 255, 255, .6); --surface-2: rgba(255, 255, 255, .82); --surface-solid: #fff0f6;
+  --ink: #7a3558; --ink-soft: #b0638a; --line: rgba(255, 255, 255, .8);
+  --accent: #e0629a; --accent-2: #ffc2da; --accent-ink: #fff; --glow: rgba(255, 220, 238, .8);
+  --shadow: 0 10px 28px rgba(190, 70, 130, .22); --nav: rgba(255, 255, 255, .75);
+}
+[data-theme="sage"] {
+  --bg1: #a6cfae; --bg2: #d3ebcd; --bg3: #eef8e6;
+  --surface: rgba(255, 255, 255, .6); --surface-2: rgba(255, 255, 255, .82); --surface-solid: #f1faea;
+  --ink: #36573f; --ink-soft: #6b8f74; --line: rgba(255, 255, 255, .8);
+  --accent: #5ea67c; --accent-2: #f2cf8c; --accent-ink: #fff; --glow: rgba(230, 250, 220, .8);
+  --shadow: 0 10px 28px rgba(50, 110, 70, .2); --nav: rgba(255, 255, 255, .75);
+}
+[data-theme="peach"] {
+  --bg1: #ffb995; --bg2: #ffd9c2; --bg3: #fff0e4;
+  --surface: rgba(255, 255, 255, .6); --surface-2: rgba(255, 255, 255, .84); --surface-solid: #fff3ea;
+  --ink: #7a432c; --ink-soft: #b3755a; --line: rgba(255, 255, 255, .8);
+  --accent: #ee7d55; --accent-2: #ffc7a8; --accent-ink: #fff; --glow: rgba(255, 235, 215, .8);
+  --shadow: 0 10px 28px rgba(190, 90, 50, .22); --nav: rgba(255, 255, 255, .75);
+}
+[data-theme="celestial"] {
+  --bg1: #15123a; --bg2: #2c2268; --bg3: #4a3a8e;
+  --surface: rgba(48, 38, 110, .62); --surface-2: rgba(66, 54, 140, .8); --surface-solid: #2a2260;
+  --ink: #efe8ff; --ink-soft: #b9acf0; --line: rgba(190, 170, 255, .28);
+  --accent: #b79bff; --accent-2: #ff9fd0; --accent-ink: #1b1440; --glow: rgba(180, 160, 255, .45);
+  --shadow: 0 12px 34px rgba(0, 0, 0, .42); --nav: rgba(40, 32, 96, .78);
+}

@@ -1,0 +1,99 @@
+/* Wobble - the character: animations, particles, speech bubble, foam */
+.pv { position: relative; --spd: 1; }
+[data-intensity="low"] .pv, [data-intensity="low"] { --spd: 1.7; }
+[data-intensity="high"] .pv, [data-intensity="high"] { --spd: .75; }
+
+.pv-body { position: relative; width: var(--pet-size, 190px); height: var(--pet-size, 190px); margin: 0 auto; transition: width .35s var(--ease), height .35s var(--ease); }
+.pv-flip { width: 100%; height: 100%; transition: transform .18s ease; }
+.pv-art { width: 100%; height: 100%; cursor: grab; }
+.pv-art:active { cursor: grabbing; }
+.pet-svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.pv-fx { position: absolute; inset: 0; pointer-events: none; overflow: visible; }
+
+.rig, .tail, .head, .eye, .paw, .chomp { transform-box: fill-box; }
+.rig { transform-origin: 50% 100%; }
+.head { transform-origin: 50% 90%; }
+.tail { transform-origin: 8% 85%; }
+.eye { transform-origin: 50% 50%; animation: blink 5.6s infinite; }
+.chomp { transform-origin: 50% 0%; }
+.shadow { transform-box: fill-box; transform-origin: center; }
+
+/* idle: gentle breathing + lazy tail */
+.pv[data-anim="idle"] .rig { animation: breathe calc(3.4s * var(--spd)) ease-in-out infinite; }
+.pv[data-anim="idle"] .tail { animation: wag calc(3s * var(--spd)) ease-in-out infinite; }
+.pv[data-mood="happy"][data-anim="idle"] .tail, .pv[data-mood="excited"] .tail, .pv[data-mood="playful"] .tail { animation-duration: calc(1.2s * var(--spd)); }
+.pv[data-mood="excited"][data-anim="idle"] .rig { animation: bounce-soft calc(.8s * var(--spd)) ease-in-out infinite; }
+
+/* walk / run */
+.pv[data-anim="walk"] .rig { animation: bob calc(.5s * var(--spd)) ease-in-out infinite; }
+.pv[data-anim="walk"] .tail { animation: wag calc(.9s * var(--spd)) ease-in-out infinite; }
+.pv[data-anim="walk"] .pl { animation: paw calc(.5s * var(--spd)) ease-in-out infinite; }
+.pv[data-anim="walk"] .pr { animation: paw calc(.5s * var(--spd)) ease-in-out infinite reverse; }
+.pv[data-anim="run"] .rig { animation: bob-run calc(.3s * var(--spd)) ease-in-out infinite; }
+.pv[data-anim="run"] .tail { animation: wag calc(.4s * var(--spd)) ease-in-out infinite; }
+.pv[data-anim="run"] .pl { animation: paw calc(.3s * var(--spd)) ease-in-out infinite; }
+.pv[data-anim="run"] .pr { animation: paw calc(.3s * var(--spd)) ease-in-out infinite reverse; }
+
+/* sleep */
+.pv[data-anim="sleep"] .rig { animation: sleepy calc(4.6s * var(--spd)) ease-in-out infinite; }
+.pv[data-anim="sleep"] .head { transform: rotate(7deg) translateY(6px); }
+.pv[data-anim="sleep"] .tail { animation: none; transform: rotate(14deg); }
+.pv[data-anim="sleep"] .eye { animation: none; }
+
+/* eat / play / celebrate / react / sad */
+.pv[data-anim="eat"] .head { animation: nod calc(.4s * var(--spd)) ease-in-out infinite; }
+.pv[data-anim="eat"] .chomp { animation: chomp calc(.22s * var(--spd)) ease-in-out infinite; }
+.pv[data-anim="eat"] .tail { animation: wag calc(.8s * var(--spd)) ease-in-out infinite; }
+.pv[data-anim="play"] .rig { animation: hop calc(.6s * var(--spd)) ease-out infinite; }
+.pv[data-anim="play"] .tail { animation: wag calc(.4s * var(--spd)) ease-in-out infinite; }
+.pv[data-anim="celebrate"] .rig { animation: cheer calc(.72s * var(--spd)) ease-out infinite; }
+.pv[data-anim="celebrate"] .tail { animation: wag calc(.3s * var(--spd)) ease-in-out infinite; }
+.pv[data-anim="react"] .rig { animation: squish calc(.5s * var(--spd)) ease-out 1; }
+.pv[data-anim="sad"] .head { transform: translateY(5px) rotate(-4deg); }
+.pv[data-anim="sad"] .rig { animation: breathe calc(5s * var(--spd)) ease-in-out infinite; }
+.pv[data-anim="sad"] .tail { animation: none; transform: rotate(20deg); }
+.pv[data-anim="lifted"] .rig { animation: dangle .5s ease-in-out infinite; transform-origin: 50% 0%; }
+.pv[data-anim="lifted"] .shadow { opacity: .35; transform: scale(.8); }
+
+@keyframes blink { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(.1); } }
+@keyframes breathe { 0%, 100% { transform: scale(1, 1); } 50% { transform: scale(1.018, .982); } }
+@keyframes bounce-soft { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+@keyframes wag { 0%, 100% { transform: rotate(-8deg); } 50% { transform: rotate(10deg); } }
+@keyframes bob { 0%, 100% { transform: translateY(0) rotate(-1.5deg); } 50% { transform: translateY(-5px) rotate(1.5deg); } }
+@keyframes bob-run { 0%, 100% { transform: translateY(0) rotate(-4deg); } 50% { transform: translateY(-11px) rotate(4deg); } }
+@keyframes paw { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+@keyframes sleepy { 0%, 100% { transform: scale(1.04, .9); } 50% { transform: scale(1.06, .88); } }
+@keyframes nod { 0%, 100% { transform: rotate(-3deg) translateY(0); } 50% { transform: rotate(4deg) translateY(4px); } }
+@keyframes chomp { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(.35); } }
+@keyframes hop { 0% { transform: translateY(0) scale(1.06, .92); } 40% { transform: translateY(-26px) scale(.96, 1.06); } 100% { transform: translateY(0) scale(1.06, .92); } }
+@keyframes cheer { 0% { transform: translateY(0) rotate(0); } 35% { transform: translateY(-40px) rotate(-7deg); } 70% { transform: translateY(-8px) rotate(6deg); } 100% { transform: translateY(0) rotate(0); } }
+@keyframes squish { 0% { transform: scale(1); } 30% { transform: scale(1.1, .88); } 60% { transform: scale(.95, 1.07); } 100% { transform: scale(1); } }
+@keyframes dangle { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
+
+/* particles */
+.pt { position: absolute; left: var(--x, 50%); top: 30%; font-size: 22px; line-height: 1; color: var(--accent-2, #f0a3cf); filter: drop-shadow(0 0 4px var(--glow, #fff)); animation: rise 1.8s ease-out forwards; will-change: transform, opacity; }
+.pt-z { font-size: 30px; font-weight: 700; color: var(--ink-soft); font-style: italic; animation-duration: 2.6s; }
+@keyframes rise { 0% { transform: translate(0, 10px) scale(.4); opacity: 0; } 15% { opacity: 1; } 100% { transform: translate(var(--dx, 0), -90px) scale(1.15); opacity: 0; } }
+
+.food-drop { position: absolute; left: 50%; top: -30px; margin-left: -20px; line-height: 0; animation: drop .65s cubic-bezier(.5, 0, 1, .6) forwards; pointer-events: none; }
+@keyframes drop { to { top: 42%; transform: scale(.6); opacity: .1; } }
+.toy { position: absolute; bottom: 4px; left: 60%; line-height: 0; animation: toy 2.4s ease-in-out forwards; pointer-events: none; }
+@keyframes toy { 0% { left: 70%; transform: translateY(0) rotate(0); } 25% { transform: translateY(-50px) rotate(120deg); } 50% { left: 18%; transform: translateY(0) rotate(260deg); } 75% { transform: translateY(-40px) rotate(380deg); } 100% { left: 66%; transform: translateY(0) rotate(520deg); } }
+
+/* speech bubble */
+.bubble { position: relative; max-width: 270px; padding: 9px 18px 10px; border-radius: 22px; background: rgba(255, 255, 255, .94); color: #4d3a86; font-size: 21px; font-weight: 400; line-height: 1.15; text-align: center; box-shadow: 0 6px 18px rgba(70, 40, 140, .22); user-select: none; }
+.bubble::after { content: ''; position: absolute; left: 50%; bottom: -9px; width: 18px; height: 18px; margin-left: -9px; background: inherit; border-radius: 3px 3px 12px 3px; transform: rotate(45deg) skew(10deg, 10deg); }
+.bubble.in { animation: bubble-in .35s var(--ease); }
+.bubble.out { animation: bubble-out .26s ease forwards; }
+@keyframes bubble-in { from { transform: scale(.6) translateY(10px); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes bubble-out { to { transform: translateY(-6px) scale(.9); opacity: 0; } }
+
+/* foam for cleaning */
+.foam-layer { position: absolute; inset: 0; z-index: 4; cursor: pointer; }
+.foam { position: absolute; border-radius: 50%; background: radial-gradient(circle at 32% 28%, #fff 0 14%, rgba(255, 255, 255, .85) 15% 38%, rgba(205, 230, 255, .55) 70%, rgba(180, 210, 255, .45)); border: 2px solid rgba(255, 255, 255, .9); box-shadow: 0 2px 8px rgba(90, 120, 200, .3); animation: foam-in .4s var(--ease) both, foam-bob 2.2s ease-in-out .4s infinite; transition: transform .25s, opacity .25s; }
+.foam.pop { transform: scale(1.7) !important; opacity: 0 !important; }
+@keyframes foam-in { from { transform: scale(0); } to { transform: scale(1); } }
+@keyframes foam-bob { 0%, 100% { translate: 0 0; } 50% { translate: 0 -4px; } }
+
+.bubble .ic-heart { vertical-align: -3px; margin: 0 1px; }
+.pt svg { display: block; }
