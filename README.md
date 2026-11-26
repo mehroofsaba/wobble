@@ -1,30 +1,123 @@
-# Wobble ♡ - your little desktop companion
+# Wobble
 
-Tauri 2 + Rust + HTML/CSS/JS + SQLite. Windows first.
+*A little desktop companion for your everyday.*
 
-## Run
-Prerequisites: [Rust](https://rustup.rs), Node 18+, and the WebView2 runtime + MSVC build tools on Windows ([Tauri prerequisites](https://v2.tauri.app/start/prerequisites/)).
+Wobble is a cozy desktop pet built with **Tauri 2, Rust, vanilla JavaScript, HTML, CSS, and SQLite**. Keep a tiny companion nearby, look after its needs, decorate its space, play quick mini-games, and keep a journal — all from a lightweight Windows desktop app.
 
-```bash
+> Windows is the primary target for this project.
+
+## Features
+
+- **A living little pet** — six needs, eight moods, personality traits, favourite and disliked foods, feeding, sleep scheduling, and random events.
+- **A desktop companion window** — a transparent, frameless pet window with dragging, quick interactions, idle awareness, and native notifications.
+- **Make its space yours** — six rooms, decoration slots, themes, accessories, coats, and a shop with unlockable items.
+- **Little games and rewards** — Pond Fishing, Heart Match, Cloud Hop, and Star Catcher, with XP, levels, daily rewards, streaks, and achievements.
+- **A place to write** — a private journal for notes and entries.
+- **A setup that stays yours** — onboarding, settings, a system tray, and local save data.
+
+## Screens and structure
+
+Wobble has two windows that share the same save data:
+
+| Window | What it does |
+| --- | --- |
+| **Hub** | Home room, games, shop, customization, journal, settings, and onboarding |
+| **Pet** | The floating companion, quick menu, idle awareness, and pet interactions |
+
+The app uses original inline SVG artwork for its character, rooms, decorations, icons, and game art.
+
+## Getting started
+
+### Requirements
+
+- [Node.js](https://nodejs.org/) 18 or newer
+- [Rust](https://rustup.rs/)
+- On Windows: Microsoft C++ Build Tools and the WebView2 runtime
+- Tauri's platform prerequisites: [Tauri v2 setup guide](https://v2.tauri.app/start/prerequisites/)
+
+### Run the desktop app
+
+Clone the repository, open a terminal in the project folder, and run:
+
+~~~bash
 npm install
-node scripts/get-fonts.mjs     # optional: bundle the Gaegu font for offline use
-npm run dev                    # desktop app
-npm run build                  # Windows installer (NSIS) in src-tauri/target/release/bundle
-```
+npm run dev
+~~~
 
-Design / UI work without Rust: `npm run preview`, then open http://localhost:5173/ (hub) and /pet.html (pet). Data falls back to localStorage in that mode.
-`npm run check` syntax-checks all JS/JSON.
+To bundle the Gaegu font for offline use, run the optional font script:
 
-## What's inside
-All artwork and icons are inline SVG (no emoji, no icon font): `src/js/ui/icons.js` (icons, food art, mood faces, game art), `ui/pet-svg.js` (character), `ui/room.js` (rooms + decor).
+~~~bash
+node scripts/get-fonts.mjs
+~~~
 
-Pet with 6 needs + 8 moods + personality (favourite/disliked food) · feeding · sleep schedule · interactive bubble cleaning · random events · 4 mini-games (Pond Fishing, Heart Match, Cloud Hop, Star Catcher) · XP/levels, daily rewards + streaks, 22 achievements · shop (food, accessories, coats, decor, rooms, themes) · 6 rooms with decoration slots · 6 themes · native notifications with quiet hours · activity awareness · system tray · onboarding · settings · SQLite persistence.
+### Build a Windows installer
 
-See `docs/ARCHITECTURE.md`.
+~~~bash
+npm run build
+~~~
 
-## Notes / decisions to confirm
-- **Database:** the table said "Supabase or Neon"; the blueprint says local SQLite. This build uses local SQLite (works offline, private). Cloud sync can be added later behind `db_get`/`db_set`.
-- **Frontend:** plain JS modules, no framework.
-- **Art:** the character, rooms and decor are original SVG drawings made for this project, in the spirit of your reference images but not copies. Swap in your own illustrated assets by editing `ui/pet-svg.js` / `ui/room.js`.
-- **Icons:** generated placeholders in `src-tauri/icons` (`npx tauri icon yourlogo.png` to replace).
-- **Boredom meter:** a fuller bar means *less* bored (like the other bars).
+The NSIS installer is generated under:
+
+~~~text
+src-tauri/target/release/bundle/nsis/
+~~~
+
+### Preview the interface without the Rust desktop shell
+
+~~~bash
+npm run preview
+~~~
+
+Then open [http://localhost:5173/](http://localhost:5173/) for the hub or [http://localhost:5173/pet.html](http://localhost:5173/pet.html) for the pet window. Preview mode uses browser localStorage as its data fallback; the desktop app uses SQLite.
+
+### Run project checks
+
+~~~bash
+npm run check
+~~~
+
+This runs the repository's JavaScript and JSON syntax checks.
+
+## Tech stack
+
+| Area | Technology |
+| --- | --- |
+| Desktop shell | Tauri 2 |
+| Native backend | Rust |
+| Frontend | HTML, CSS, and vanilla JavaScript modules |
+| Local database | SQLite via rusqlite |
+| Artwork | Inline SVG |
+
+## Project layout
+
+~~~text
+src/
+  css/          Base styles, themes, hub, and pet-window styles
+  js/
+    core/       Shared data, state store, and Tauri bridge
+    engine/     Pet behaviour, actions, audio, notifications, progression
+    games/      Individual mini-games and game registry
+    pages/      Hub pages
+    ui/         Reusable UI, pet, room, icons, and effects
+  index.html    Main hub window
+  pet.html      Floating pet window
+src-tauri/
+  src/          Rust commands and application setup
+  icons/        App and installer icons
+docs/
+  ARCHITECTURE.md
+~~~
+
+For the window responsibilities, state flow, database layout, and guidance for adding content or mini-games, see [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+
+## Privacy and storage
+
+Wobble is designed to keep its companion data on the device. The desktop app stores its save data and journal in a SQLite database in the app's data directory. Browser preview mode uses localStorage instead.
+
+Activity awareness uses the operating system's last-input time to estimate idle duration. It does not read keystrokes, window titles, files, or screen contents. The app does not send pet activity or journal content to a remote service.
+
+## Contributing
+
+Bug reports, thoughtful suggestions, and pull requests are welcome. For larger changes, opening an issue first helps discuss the approach before implementation.
+
+When contributing, please keep changes focused and include clear steps to reproduce bugs or test new behaviour.
