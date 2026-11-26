@@ -84,6 +84,8 @@ The desktop app stores your pet state, journal entries, and achievements in a SQ
 
 To make a backup, **fully quit Wobble** and copy `wobble.db` to a safe location. To restore it, quit Wobble and replace the current database file with your backup. Keep a separate copy before replacing anything.
 
+**Important:** Closing the Hub window does not quit the desktop app; it hides Wobble in the system tray. Before copying or replacing the database, use the Wobble tray menu and choose **Quit** so the database connection is closed and pending writes are finished.
+
 You can also reset the app from **Settings → Appearance → Reset data**. This permanently deletes your pet state, owned items, achievements, and journal entries.
 
 When using browser preview mode (`npm run preview`), data is stored in that browser's `localStorage` instead of `wobble.db`.
