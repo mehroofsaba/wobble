@@ -78,6 +78,16 @@ npm run check
 
 This runs the repository's JavaScript and JSON syntax checks.
 
+## Back up and reset your data
+
+The desktop app stores your pet state, journal entries, and achievements in a SQLite database named `wobble.db` inside the operating system's application data directory.
+
+To make a backup, **fully quit Wobble** and copy `wobble.db` to a safe location. To restore it, quit Wobble and replace the current database file with your backup. Keep a separate copy before replacing anything.
+
+You can also reset the app from **Settings → Appearance → Reset data**. This permanently deletes your pet state, owned items, achievements, and journal entries.
+
+When using browser preview mode (`npm run preview`), data is stored in that browser's `localStorage` instead of `wobble.db`.
+
 ## Tech stack
 
 | Area | Technology |
