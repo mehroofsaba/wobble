@@ -60,9 +60,9 @@ export function start(stage, api) {
     // dock + pet
     ctx.fillStyle = '#b98558'; ctx.fillRect(0, wy - 16, W * 0.26, 16); ctx.fillStyle = '#8a5c3a'; ctx.fillRect(W * 0.04, wy, 14, 70); ctx.fillRect(W * 0.2, wy, 14, 70);
     drawPet(ctx, img, W * 0.13, wy - 70, 128);
-    const rx = W * 0.13 + 40; const ry = wy - 118;
-    ctx.strokeStyle = '#8a5c3a'; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(rx - 20, ry + 50); ctx.lineTo(rx + 30, ry - 10); ctx.stroke();
-    ctx.strokeStyle = 'rgba(255,255,255,.9)'; ctx.lineWidth = 1.6; ctx.beginPath(); ctx.moveTo(rx + 30, ry - 10); ctx.lineTo(hook.x, hook.y); ctx.stroke();
+    const rodX = W * 0.13 + 14; const rodY = wy - 20;
+    ctx.strokeStyle = '#8a5c3a'; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(rodX, rodY); ctx.lineTo(rodX + 48, rodY - 62); ctx.stroke();
+    ctx.strokeStyle = 'rgba(255,255,255,.9)'; ctx.lineWidth = 1.6; ctx.beginPath(); ctx.moveTo(rodX + 48, rodY - 62); ctx.lineTo(hook.x, hook.y); ctx.stroke();
     // fish
     const drawFish = (f) => {
       const d = f.vx >= 0 ? 1 : -1; const wob = Math.sin(t * 8 + f.ph) * 0.15;
