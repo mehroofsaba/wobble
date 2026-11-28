@@ -2,7 +2,7 @@
 
 *A little desktop companion for your everyday.*
 
-Wobble is a cozy desktop pet built with **Tauri 2, Rust, vanilla JavaScript, HTML, CSS, and SQLite**. Keep a tiny companion nearby, look after its needs, decorate its space, play quick mini-games, and keep a journal — all from a lightweight Windows desktop app.
+Wobble is a cozy desktop pet built with **Tauri 2, Rust, vanilla JavaScript, HTML, CSS, and SQLite**. Keep a tiny companion nearby, look after its needs, decorate its space, play quick mini-games, and keep a journal - all from a lightweight Windows desktop app.
 
 > Windows is the primary target for this project.
 
