@@ -8,12 +8,12 @@ Wobble is a cozy desktop pet built with **Tauri 2, Rust, vanilla JavaScript, HTM
 
 ## Features
 
-- **A living little pet** — six needs, eight moods, personality traits, favourite and disliked foods, feeding, sleep scheduling, and random events.
-- **A desktop companion window** — a transparent, frameless pet window with dragging, quick interactions, idle awareness, and native notifications.
-- **Make its space yours** — six rooms, decoration slots, themes, accessories, coats, and a shop with unlockable items.
-- **Little games and rewards** — Pond Fishing, Heart Match, Cloud Hop, and Star Catcher, with XP, levels, daily rewards, streaks, and achievements.
-- **A place to write** — a private journal for notes and entries.
-- **A setup that stays yours** — onboarding, settings, a system tray, and local save data.
+- **A living little pet** - six needs, eight moods, personality traits, favourite and disliked foods, feeding, sleep scheduling, and random events.
+- **A desktop companion window** - a transparent, frameless pet window with dragging, quick interactions, idle awareness, and native notifications.
+- **Make its space yours** - six rooms, decoration slots, themes, accessories, coats, and a shop with unlockable items.
+- **Little games and rewards** - Pond Fishing, Heart Match, Cloud Hop, and Star Catcher, with XP, levels, daily rewards, streaks, and achievements.
+- **A place to write** - a private journal for notes and entries.
+- **A setup that stays yours** - onboarding, settings, a system tray, and local save data.
 
 ## Screens and structure
 
